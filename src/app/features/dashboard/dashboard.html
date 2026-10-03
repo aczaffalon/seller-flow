@@ -2,6 +2,15 @@
   <h1>{{ pageTitle }}</h1>
   <p>{{ pageDescription }}</p>
   
+  <div>
+  @for (indicator of indicators; track indicator.label) {
+    <article>
+      <h2>{{ indicator.label }}</h2>
+      <p>{{ indicator.value }}</p>
+    </article>
+  }
+</div>
+
   <button type="button" (click)="toggleWelcomeMessage()">
     Mostrar/ocultar mensagem
   </button>

@@ -10,6 +10,20 @@ export class Dashboard {
   protected readonly pageTitle = 'Dashboard';
   protected readonly pageDescription =
     'Acompanhe os principais indicadores da operação.';
+  protected readonly indicators = [
+    {
+        label: 'Vendedores ativos',
+        value: '128',
+      },
+      {
+        label: 'Transações hoje',
+        value: '1.842',
+      },
+      {
+        label: 'Volume processado',
+        value: 'R$ 284.500',
+      },
+    ];
     
   protected readonly showWelcomeMessage = signal(false);
 
