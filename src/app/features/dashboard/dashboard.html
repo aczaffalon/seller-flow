@@ -1,4 +1,12 @@
 <section>
   <h1>{{ pageTitle }}</h1>
   <p>{{ pageDescription }}</p>
+  
+  <button type="button" (click)="toggleWelcomeMessage()">
+    Mostrar/ocultar mensagem
+  </button>
+
+  @if (showWelcomeMessage()) {
+    <p>Bem-vindo ao SellerFlow!</p>
+}
 </section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   imports: [],
@@ -10,4 +10,10 @@ export class Dashboard {
   protected readonly pageTitle = 'Dashboard';
   protected readonly pageDescription =
     'Acompanhe os principais indicadores da operação.';
+    
+  protected readonly showWelcomeMessage = signal(false);
+
+  protected toggleWelcomeMessage(): void {
+  this.showWelcomeMessage.update((currentValue) => !currentValue);
+}
 }
