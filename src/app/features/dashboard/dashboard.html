@@ -9,4 +9,17 @@
   @if (showWelcomeMessage()) {
     <p>Bem-vindo ao SellerFlow!</p>
 }
+  <button
+    type="button"
+    [disabled]="isActionDisabled()"
+    >
+    Ação principal
+  </button>
+
+  <button
+    type="button"
+    (click)="toggleActionState()"
+  >
+    Alternar estado da ação
+  </button>
 </section>

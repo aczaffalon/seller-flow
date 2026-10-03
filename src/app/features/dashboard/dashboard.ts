@@ -16,4 +16,9 @@ export class Dashboard {
   protected toggleWelcomeMessage(): void {
   this.showWelcomeMessage.update((currentValue) => !currentValue);
 }
+  protected readonly isActionDisabled = signal(false);
+
+  protected toggleActionState(): void {
+    this.isActionDisabled.update((currentValue) => !currentValue);
+}
 }
