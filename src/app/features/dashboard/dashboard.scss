@@ -1,0 +1,59 @@
+.dashboard {
+  padding: 2rem;
+}
+
+.dashboard__header {
+  margin-bottom: 2rem;
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  p {
+    margin-top: 0.5rem;
+  }
+}
+
+.dashboard__indicators {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.indicator-card {
+  padding: 1.5rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
+
+.indicator-card__label {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.indicator-card__value {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.dashboard__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
+  }
+
+  .dashboard__indicators {
+    grid-template-columns: 1fr;
+  }
+}
