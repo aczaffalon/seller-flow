@@ -36,4 +36,8 @@ export class Dashboard {
   protected toggleActionState(): void {
     this.isActionDisabled.update((currentValue) => !currentValue);
 }
+protected readonly selectedIndicator = signal<string | null>(null);
+protected handleIndicatorSelected(label: string): void {
+  this.selectedIndicator.set(label);
+}
 }

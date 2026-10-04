@@ -5,13 +5,18 @@
   </header>
 
   <div class="dashboard__indicators">
-    @for (indicator of indicators; track indicator.label) {
+ @for (indicator of indicators; track indicator.label) {
   <app-indicator-card
     [label]="indicator.label"
     [value]="indicator.value"
+    (selected)="handleIndicatorSelected(indicator.label)"
   />
-}
+   }
   </div>
+
+  @if (selectedIndicator()) {
+   <p>Indicador selecionado: {{ selectedIndicator() }}</p>
+  }
 
   <div class="dashboard__actions">
     <button type="button" (click)="toggleWelcomeMessage()">
