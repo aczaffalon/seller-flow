@@ -6,11 +6,11 @@
 
   <div class="dashboard__indicators">
     @for (indicator of indicators; track indicator.label) {
-      <article class="indicator-card">
-        <h2 class="indicator-card__label">{{ indicator.label }}</h2>
-        <p class="indicator-card__value">{{ indicator.value }}</p>
-      </article>
-    }
+  <app-indicator-card
+    [label]="indicator.label"
+    [value]="indicator.value"
+  />
+}
   </div>
 
   <div class="dashboard__actions">

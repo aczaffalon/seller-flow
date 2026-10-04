@@ -1,7 +1,8 @@
 import { Component, signal } from '@angular/core';
+import { IndicatorCard } from '../../shared/components/indicator-card/indicator-card';
 
 @Component({
-  imports: [],
+  imports: [IndicatorCard],
   selector: 'app-dashboard',
   styleUrl: './dashboard.scss',
   templateUrl: './dashboard.html',
