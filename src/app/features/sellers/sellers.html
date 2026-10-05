@@ -6,6 +6,17 @@
 
   <div class="sellers__controls">
     <label for="seller-search">Buscar vendedor</label>
+    <label for="seller-status">Status</label>
+
+<select
+  id="seller-status"
+  [value]="statusFilter()"
+  (change)="updateStatusFilter($event)"
+>
+  <option value="all">Todos</option>
+  <option value="active">Ativos</option>
+  <option value="inactive">Inativos</option>
+</select>
   <input
     id="seller-search"
     type="search"

@@ -32,23 +32,32 @@ export class Sellers {
   },
 ];
 protected readonly searchTerm = signal('');
+protected readonly statusFilter = signal<'all' | Seller['status']>('all');
 protected readonly filteredSellers = computed(() => {
   const term = this.searchTerm().trim().toLowerCase();
-
-  if (!term) {
-    return this.sellers;
-  }
+  const status = this.statusFilter();
 
   return this.sellers.filter((seller) => {
-    const name = seller.name.toLowerCase();
-    const email = seller.email.toLowerCase();
+    const matchesSearch =
+      !term ||
+      seller.name.toLowerCase().includes(term) ||
+      seller.email.toLowerCase().includes(term);
 
+    const matchesStatus =
+      status === 'all' || seller.status === status;
 
-    return name.includes(term) || email.includes(term);
+    return matchesSearch && matchesStatus;
   });
 });
 protected updateSearchTerm(event: Event): void {
   const input = event.target as HTMLInputElement;
   this.searchTerm.set(input.value);
+}
+protected updateStatusFilter(event: Event): void {
+  const select = event.target as HTMLSelectElement;
+
+  this.statusFilter.set(
+    select.value as 'all' | Seller['status'],
+  );
 }
 }
