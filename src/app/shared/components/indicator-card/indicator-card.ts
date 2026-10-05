@@ -10,7 +10,8 @@ export class IndicatorCard {
   readonly label = input.required<string>();
   readonly value = input.required<string>();
   readonly selected = output<void>();
+  
   protected selectCard(): void {
-  this.selected.emit();
-}
+   this.selected.emit();
+ }
 }

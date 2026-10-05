@@ -25,18 +25,9 @@ export class Dashboard {
         value: 'R$ 284.500',
       },
     ];
-    
-  protected readonly showWelcomeMessage = signal(false);
-
-  protected toggleWelcomeMessage(): void {
-  this.showWelcomeMessage.update((currentValue) => !currentValue);
-}
-  protected readonly isActionDisabled = signal(false);
-
-  protected toggleActionState(): void {
-    this.isActionDisabled.update((currentValue) => !currentValue);
-}
+  
 protected readonly selectedIndicator = signal<string | null>(null);
+
 protected handleIndicatorSelected(label: string): void {
   this.selectedIndicator.set(label);
 }
