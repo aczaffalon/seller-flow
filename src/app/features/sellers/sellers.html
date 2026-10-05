@@ -1,19 +1,28 @@
-<section>
-  <header>
+<section class="sellers">
+  <header class="sellers__header">
     <h1>Vendedores</h1>
     <p>Consulte os vendedores cadastrados e seus principais dados.</p>
   </header>
 
-  <div>
-  @for (seller of sellers; track seller.id) {
-    <article>
-      <h2>{{ seller.name }}</h2>
-      <p>{{ seller.email }}</p>
-      <p>Status: {{ seller.status }}</p>
-      <p>Volume: {{ seller.transactionVolume }}</p>
-    </article>
-  } @empty {
-    <p>Nenhum vendedor encontrado.</p>
-  }
-</div>
-</section>
+  <div class="sellers__controls">
+    <label for="seller-search">Buscar vendedor</label>
+    <input
+      id="seller-search"
+      type="search"
+      placeholder="Digite um nome ou e-mail"
+    />
+  </div>
+
+  <div class="sellers__list">
+    @for (seller of sellers; track seller.id) {
+      <article class="seller-card">
+        <h2>{{ seller.name }}</h2>
+        <p>{{ seller.email }}</p>
+        <p>Status: {{ seller.status }}</p>
+        <p>Volume: {{ seller.transactionVolume }}</p>
+      </article>
+    } @empty {
+      <p>Nenhum vendedor encontrado.</p>
+    }
+  </div>
+</section>  S
