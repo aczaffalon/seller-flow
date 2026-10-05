@@ -5,13 +5,15 @@
   </header>
 
   <div>
-    @for (seller of sellers; track seller.id) {
-      <article>
-        <h2>{{ seller.name }}</h2>
-        <p>{{ seller.email }}</p>
-        <p>Status: {{ seller.status }}</p>
-        <p>Volume: {{ seller.transactionVolume }}</p>
-      </article>
-    }
-  </div>
+  @for (seller of sellers; track seller.id) {
+    <article>
+      <h2>{{ seller.name }}</h2>
+      <p>{{ seller.email }}</p>
+      <p>Status: {{ seller.status }}</p>
+      <p>Volume: {{ seller.transactionVolume }}</p>
+    </article>
+  } @empty {
+    <p>Nenhum vendedor encontrado.</p>
+  }
+</div>
 </section>
