@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { IndicatorCard } from '../../shared/components/indicator-card/indicator-card';
+import { DashboardIndicator } from './models/dashboard-indicator';
 
 @Component({
   imports: [IndicatorCard],
@@ -11,7 +12,7 @@ export class Dashboard {
   protected readonly pageTitle = 'Dashboard';
   protected readonly pageDescription =
     'Acompanhe os principais indicadores da operação.';
-  protected readonly indicators = [
+  protected readonly indicators: DashboardIndicator[] = [
     {
         label: 'Vendedores ativos',
         value: '128',
