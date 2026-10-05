@@ -1,1 +1,17 @@
-<p>sellers works!</p>
+<section>
+  <header>
+    <h1>Vendedores</h1>
+    <p>Consulte os vendedores cadastrados e seus principais dados.</p>
+  </header>
+
+  <div>
+    @for (seller of sellers; track seller.id) {
+      <article>
+        <h2>{{ seller.name }}</h2>
+        <p>{{ seller.email }}</p>
+        <p>Status: {{ seller.status }}</p>
+        <p>Volume: {{ seller.transactionVolume }}</p>
+      </article>
+    }
+  </div>
+</section>
