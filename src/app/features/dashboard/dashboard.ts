@@ -12,6 +12,7 @@ export class Dashboard {
   protected readonly pageTitle = 'Dashboard';
   protected readonly pageDescription =
     'Acompanhe os principais indicadores da operação.';
+ 
   protected readonly indicators: DashboardIndicator[] = [
     {
         label: 'Vendedores ativos',
