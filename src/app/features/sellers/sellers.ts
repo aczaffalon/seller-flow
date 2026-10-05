@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { Seller } from './models/seller';
 
 @Component({
@@ -31,4 +31,24 @@ export class Sellers {
     transactionVolume: 19780,
   },
 ];
+protected readonly searchTerm = signal('');
+protected readonly filteredSellers = computed(() => {
+  const term = this.searchTerm().trim().toLowerCase();
+
+  if (!term) {
+    return this.sellers;
+  }
+
+  return this.sellers.filter((seller) => {
+    const name = seller.name.toLowerCase();
+    const email = seller.email.toLowerCase();
+
+
+    return name.includes(term) || email.includes(term);
+  });
+});
+protected updateSearchTerm(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  this.searchTerm.set(input.value);
+}
 }

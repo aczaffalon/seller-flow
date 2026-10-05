@@ -6,15 +6,17 @@
 
   <div class="sellers__controls">
     <label for="seller-search">Buscar vendedor</label>
-    <input
-      id="seller-search"
-      type="search"
-      placeholder="Digite um nome ou e-mail"
-    />
+  <input
+    id="seller-search"
+    type="search"
+    placeholder="Digite um nome ou e-mail"
+    [value]="searchTerm()"
+    (input)="updateSearchTerm($event)"
+  />
   </div>
 
   <div class="sellers__list">
-    @for (seller of sellers; track seller.id) {
+    @for (seller of filteredSellers(); track seller.id) {
       <article class="seller-card">
         <h2>{{ seller.name }}</h2>
         <p>{{ seller.email }}</p>
