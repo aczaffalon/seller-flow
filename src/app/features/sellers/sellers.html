@@ -17,6 +17,16 @@
   <option value="active">Ativos</option>
   <option value="inactive">Inativos</option>
 </select>
+<label for="seller-sort">Ordenar por</label>
+<select
+  id="seller-sort"
+  [value]="sortOrder()"
+  (change)="updateSortOrder($event)"
+>
+  <option value="name">Nome (A–Z)</option>
+  <option value="volume-desc">Maior volume de transações</option>
+  <option value="volume-asc">Menor volume de transações</option>
+</select>
   <input
     id="seller-search"
     type="search"
@@ -27,7 +37,7 @@
   </div>
 
   <div class="sellers__list">
-    @for (seller of filteredSellers(); track seller.id) {
+    @for (seller of sortedSellers(); track seller.id) {
       <article class="seller-card">
         <h2>{{ seller.name }}</h2>
         <p>{{ seller.email }}</p>

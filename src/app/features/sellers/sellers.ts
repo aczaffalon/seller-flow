@@ -33,6 +33,9 @@ export class Sellers {
 ];
 protected readonly searchTerm = signal('');
 protected readonly statusFilter = signal<'all' | Seller['status']>('all');
+protected readonly sortOrder = signal<
+  'name' | 'volume-desc' | 'volume-asc'
+>('name');
 protected readonly filteredSellers = computed(() => {
   const term = this.searchTerm().trim().toLowerCase();
   const status = this.statusFilter();
@@ -49,6 +52,27 @@ protected readonly filteredSellers = computed(() => {
     return matchesSearch && matchesStatus;
   });
 });
+protected readonly sortedSellers = computed(() => {
+  const sellers = [...this.filteredSellers()];
+  const order = this.sortOrder();
+
+  switch (order) {
+    case 'name':
+      return sellers.sort((a, b) =>
+        a.name.localeCompare(b.name, 'pt-BR'),
+      );
+
+    case 'volume-desc':
+      return sellers.sort(
+        (a, b) => b.transactionVolume - a.transactionVolume,
+      );
+
+    case 'volume-asc':
+      return sellers.sort(
+        (a, b) => a.transactionVolume - b.transactionVolume,
+      );
+  }
+});
 protected updateSearchTerm(event: Event): void {
   const input = event.target as HTMLInputElement;
   this.searchTerm.set(input.value);
@@ -59,5 +83,17 @@ protected updateStatusFilter(event: Event): void {
   this.statusFilter.set(
     select.value as 'all' | Seller['status'],
   );
+}
+protected updateSortOrder(event: Event): void {
+  const select = event.target as HTMLSelectElement;
+  const value = select.value;
+
+  if (
+    value === 'name' ||
+    value === 'volume-desc' ||
+    value === 'volume-asc'
+  ) {
+    this.sortOrder.set(value);
+  }
 }
 }
